@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">GetToKnowTheWorld</string>
     <string name="see_countries_list_button">Start Browsing Countries</string>
+    <string name="choose_country_text">Select the Country of Your Choice</string>
+    <!-- Country Infos -->
+    <string name="country_region">Region: </string>
+    <string name="country_subregion">Subregion: </string>
 </resources>
