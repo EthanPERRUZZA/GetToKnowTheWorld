@@ -5,8 +5,17 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
+import fi.centria.perruzza.ethan.gettoknowtheworld.PrivateData.Companion.API_KEY
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import java.net.HttpURLConnection
+import java.net.URL
 
 class CountryListFragment : Fragment() {
     private lateinit var linearLayoutManager : LinearLayoutManager
@@ -28,12 +37,37 @@ class CountryListFragment : Fragment() {
         recyclerView = view.findViewById(R.id.country_recycler_view)
         recyclerView.layoutManager = linearLayoutManager
 
-        val countryList : ArrayList<CountryData> = arrayListOf()
-        countryList.add(CountryData("France", "Europe", "Western Europe"))
-        countryList.add(CountryData("Germany", "Europe", "Western Europe"))
-        countryList.add(CountryData("Finland", "Europe", "Northern Europe"))
+        lifecycleScope.launch {
+            val jsonResult = getCountriesAsync()
 
-        adapter = CountryAdapter(view.context, countryList)
-        recyclerView.adapter = adapter
+            if (jsonResult[0] != '[') {
+                //error occurred and we don't want the app to crash
+                return@launch
+            }
+
+            val listType = object : TypeToken<List<CountryListData>>() {}.type
+            val countryList: List<CountryListData> = Gson().fromJson(jsonResult, listType)
+
+            adapter = CountryAdapter(view.context, countryList)
+            recyclerView.adapter = adapter
+        }
+
+    }
+
+    suspend fun getCountriesAsync(): String {
+        return withContext(Dispatchers.IO) {
+            val url = URL("https://api.countrystatecity.in/v1/countries")
+            val connection = url.openConnection() as HttpURLConnection
+            connection.requestMethod = "GET"
+            connection.setRequestProperty("X-CSCAPI-KEY", API_KEY)
+
+            val responseCode = connection.responseCode
+            if (responseCode == HttpURLConnection.HTTP_OK) {
+                val response = connection.inputStream.bufferedReader().readText()
+                response
+            } else {
+                "Error response code: $responseCode"
+            }
+        }
     }
 }

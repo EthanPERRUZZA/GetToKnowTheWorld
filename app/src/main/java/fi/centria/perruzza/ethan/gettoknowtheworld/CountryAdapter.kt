@@ -8,7 +8,7 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 
-class CountryAdapter(context: Context, val countryList : ArrayList<CountryData>) : RecyclerView.Adapter<CountryAdapter.CountryHolder>() {
+class CountryAdapter(context: Context, val countryList : List<CountryListData>) : RecyclerView.Adapter<CountryAdapter.CountryHolder>() {
     private val inflater : LayoutInflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
 
     class CountryHolder(v : View) : RecyclerView.ViewHolder(v), View.OnClickListener {
@@ -16,7 +16,7 @@ class CountryAdapter(context: Context, val countryList : ArrayList<CountryData>)
         var countryregion : TextView
         var countrysubregion : TextView
         var view : View = v
-        var country : CountryData? = null
+        var country : CountryListData? = null
 
         init {
             countryname = view.findViewById(R.id.country_name)
@@ -25,15 +25,15 @@ class CountryAdapter(context: Context, val countryList : ArrayList<CountryData>)
             v.setOnClickListener(this)
         }
 
-        fun addText(country: CountryData) {
+        fun addText(country: CountryListData) {
             this.country = country
-            countryname.text = country.countryname
-            countryregion.text = country.countryregion
-            countrysubregion.text = country.countrysubregion
+            countryname.text = country.name
+            countryregion.text = country.id.toString()
+            countrysubregion.text = country.iso2
         }
 
         override fun onClick(p0: View?) {
-            val toast = Toast.makeText(view.context, country?.countryname.toString(), Toast.LENGTH_LONG)
+            val toast = Toast.makeText(view.context, country?.name.toString(), Toast.LENGTH_LONG)
             toast.show()
         }
     }
