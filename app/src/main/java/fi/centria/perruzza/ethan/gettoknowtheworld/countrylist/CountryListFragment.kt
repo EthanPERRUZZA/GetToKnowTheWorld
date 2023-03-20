@@ -49,7 +49,7 @@ class CountryListFragment : Fragment() {
             val listType = object : TypeToken<List<CountryListData>>() {}.type
             val countryList: List<CountryListData> = Gson().fromJson(jsonResult, listType)
 
-            adapter = CountryAdapter(view.context, countryList)
+            adapter = CountryAdapter(view.context, countryList, this@CountryListFragment)
             recyclerView.adapter = adapter
         }
 
