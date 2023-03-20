@@ -1,4 +1,4 @@
-package fi.centria.perruzza.ethan.gettoknowtheworld
+package fi.centria.perruzza.ethan.gettoknowtheworld.countrylist
 
 import android.content.Context
 import android.view.LayoutInflater
@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import fi.centria.perruzza.ethan.gettoknowtheworld.R
 
 class CountryAdapter(context: Context, val countryList : List<CountryListData>) : RecyclerView.Adapter<CountryAdapter.CountryHolder>() {
     private val inflater : LayoutInflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater

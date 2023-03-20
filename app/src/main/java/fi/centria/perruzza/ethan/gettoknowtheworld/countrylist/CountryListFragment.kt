@@ -1,4 +1,4 @@
-package fi.centria.perruzza.ethan.gettoknowtheworld
+package fi.centria.perruzza.ethan.gettoknowtheworld.countrylist
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
 import com.google.gson.reflect.TypeToken
 import fi.centria.perruzza.ethan.gettoknowtheworld.PrivateData.Companion.API_KEY
+import fi.centria.perruzza.ethan.gettoknowtheworld.R
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext

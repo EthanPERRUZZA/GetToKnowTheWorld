@@ -1,4 +1,4 @@
-package fi.centria.perruzza.ethan.gettoknowtheworld
+package fi.centria.perruzza.ethan.gettoknowtheworld.countrylist
 
 data class CountryListData(
     val id: Int,
