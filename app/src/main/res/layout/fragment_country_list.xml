@@ -20,14 +20,40 @@
            app:layout_constraintStart_toStartOf="parent"
            app:layout_constraintEnd_toEndOf="parent"/>
 
+       <TextView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:id="@+id/id_column_name"
+           android:text="@string/country_id"
+           app:layout_constraintTop_toBottomOf="@id/choose_country_text"
+           android:layout_marginTop="10dp"
+           app:layout_constraintStart_toStartOf="parent"/>
+
+       <TextView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:id="@+id/country_name_column_name"
+           android:text="@string/country_name"
+           app:layout_constraintTop_toTopOf="@id/id_column_name"
+           app:layout_constraintStart_toEndOf="@id/id_column_name"
+           app:layout_constraintEnd_toStartOf="@id/country_iso2_column_name"/>
+
+       <TextView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:id="@+id/country_iso2_column_name"
+           android:text="@string/country_iso2"
+           app:layout_constraintTop_toTopOf="@id/id_column_name"
+           app:layout_constraintEnd_toEndOf="parent"/>
+
        <androidx.recyclerview.widget.RecyclerView
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
            android:id="@+id/country_recycler_view"
-           app:layout_constraintTop_toBottomOf="@id/choose_country_text"
+           app:layout_constraintTop_toBottomOf="@id/id_column_name"
            app:layout_constraintStart_toStartOf="parent"
            app:layout_constraintEnd_toEndOf="parent"
-           android:layout_marginTop="20dp" />
+           android:layout_marginTop="5dp" />
 
    </androidx.constraintlayout.widget.ConstraintLayout>
 

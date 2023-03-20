@@ -2,6 +2,10 @@
     <string name="app_name">GetToKnowTheWorld</string>
     <string name="see_countries_list_button">Start Browsing Countries</string>
     <string name="choose_country_text">Select the Country of Your Choice</string>
+    <!-- Country List Info Strings -->
+    <string name="country_id">Country ID: </string>
+    <string name="country_name">Country Name: </string>
+    <string name="country_iso2">Country ISO2: </string>
     <!-- Country Infos -->
     <string name="country_region">Region: </string>
     <string name="country_subregion">Subregion: </string>

@@ -20,8 +20,8 @@ class CountryAdapter(context: Context, val countryList : List<CountryListData>) 
 
         init {
             countryname = view.findViewById(R.id.country_name)
-            countryregion = view.findViewById(R.id.country_region)
-            countrysubregion = view.findViewById(R.id.country_subregion)
+            countryregion = view.findViewById(R.id.country_id)
+            countrysubregion = view.findViewById(R.id.country_iso2)
             v.setOnClickListener(this)
         }
 
