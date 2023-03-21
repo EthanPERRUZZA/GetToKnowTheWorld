@@ -3,8 +3,10 @@ package fi.centria.perruzza.ethan.gettoknowtheworld.game
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.ImageButton
+import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.lifecycle.lifecycleScope
 import com.google.gson.Gson
@@ -14,9 +16,7 @@ import fi.centria.perruzza.ethan.gettoknowtheworld.PrivateData
 import fi.centria.perruzza.ethan.gettoknowtheworld.R
 import fi.centria.perruzza.ethan.gettoknowtheworld.countrylist.CountryListData
 import fi.centria.perruzza.ethan.gettoknowtheworld.countrymoreinfo.CountryMoreInfoData
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.*
 import java.net.HttpURLConnection
 import java.net.URL
 import kotlin.collections.ArrayList
@@ -30,6 +30,9 @@ class GameActivity : AppCompatActivity() {
     lateinit var answer : CountryListData
     lateinit var countryList: List<CountryListData>
     lateinit var buttonDiscover: ImageButton
+    lateinit var correctDisplay: RelativeLayout
+    lateinit var wrongDisplay: RelativeLayout
+    lateinit var answerTextView: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,6 +58,9 @@ class GameActivity : AppCompatActivity() {
         button4 = findViewById(R.id.button_4)
         flag = findViewById(R.id.country_flag)
         buttonDiscover = findViewById(R.id.button_discover)
+        correctDisplay = findViewById(R.id.correct_answer_display)
+        wrongDisplay = findViewById(R.id.wrong_answer_display)
+        answerTextView = findViewById(R.id.answer)
 
         button1.setOnClickListener{
             answer(button1)
@@ -108,6 +114,22 @@ class GameActivity : AppCompatActivity() {
     }
 
     private fun answer(button: Button) {
+        if (button.text == answer.name) {
+            correctDisplay.visibility = View.VISIBLE
+            lifecycleScope.launch {
+                delay(1_000)
+                correctDisplay.visibility = View.GONE
+            }
+        }
+        else {
+            answerTextView.text = answer.name
+            wrongDisplay.visibility = View.VISIBLE
+            lifecycleScope.launch {
+                delay(1_000)
+                wrongDisplay.visibility = View.GONE
+            }
+        }
+
         generateNewQuestion()
     }
 

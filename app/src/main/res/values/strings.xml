@@ -17,4 +17,7 @@
     <string name="country_phonecode">■ Phone Code:\ </string>
     <!-- Game -->
     <string name="question_flag">To which country this flag correspond?</string>
+    <string name="good_answer">Good Answer!</string>
+    <string name="wrong_answer">Wrong Answer!</string>
+    <string name="correction">The answer was</string>
 </resources>

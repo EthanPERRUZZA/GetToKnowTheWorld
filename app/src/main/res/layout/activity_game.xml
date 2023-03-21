@@ -88,4 +88,67 @@
         app:layout_constraintStart_toEndOf="@id/button_discover"
         app:layout_constraintEnd_toEndOf="parent"/>
 
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/green"
+        android:id="@+id/correct_answer_display"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:translationZ="10dp"
+        android:visibility="invisible">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/good_answer"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:textSize="50sp"
+            android:textStyle="bold"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/red"
+        android:id="@+id/wrong_answer_display"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:translationZ="10dp"
+        android:visibility="invisible">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/wrong_answer"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:id="@+id/wrong"
+            android:textSize="50sp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/correction"
+            android:textSize="20sp"
+            android:id="@+id/answer_title"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/wrong"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:layout_centerHorizontal="true"
+            android:id="@+id/answer"
+            android:layout_below="@id/answer_title"/>
+    </RelativeLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
