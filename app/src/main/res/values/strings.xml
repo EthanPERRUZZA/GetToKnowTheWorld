@@ -3,6 +3,9 @@
     <string name="see_countries_list_button">Start Browsing Countries</string>
     <string name="choose_country_text">Select the Country of Your Choice</string>
     <string name="separation">~</string>
+    <!-- Buttons -->
+    <string name="button_discover">Discover</string>
+    <string name="Button_play">Pl</string>
     <!-- Country List Info Strings -->
     <string name="country_id">Country ID:\ </string>
     <string name="country_name">Country Name:\ </string>
@@ -12,4 +15,6 @@
     <string name="country_capital">■ Capital:\ </string>
     <string name="country_currency">■ Currency:\ </string>
     <string name="country_phonecode">■ Phone Code:\ </string>
+    <!-- Game -->
+    <string name="question_flag">To which country this flag correspond?</string>
 </resources>
