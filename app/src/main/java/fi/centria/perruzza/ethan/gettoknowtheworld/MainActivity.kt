@@ -1,12 +1,14 @@
 package fi.centria.perruzza.ethan.gettoknowtheworld
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
+import android.widget.ImageButton
 import androidx.fragment.app.commit
+import fi.centria.perruzza.ethan.gettoknowtheworld.game.GameActivity
 
 class MainActivity : AppCompatActivity() {
-    lateinit var buttonPlay: Button
+    lateinit var buttonPlay: ImageButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,7 +23,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         buttonPlay.setOnClickListener{
-
+            val intent = Intent(this, GameActivity::class.java)
+            startActivity(intent)
         }
     }
 }
