@@ -23,7 +23,10 @@ class SelectCountryHomePage : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // links the ui to the code
         seeCountriesListButton = view.findViewById(R.id.see_countries_list_button)
+
+        // when clicked on the button launch the next fragment with the country list
         seeCountriesListButton.setOnClickListener {
             val fragmentTransaction = this.parentFragmentManager.beginTransaction()
             val countryListFragment = CountryListFragment()

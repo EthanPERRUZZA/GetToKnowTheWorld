@@ -14,14 +14,17 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        // link ui elements
         buttonPlay = findViewById(R.id.button_play)
 
+        // launch the first fragment of the discover part
         val selectCountryHomePage = SelectCountryHomePage()
         supportFragmentManager.commit {
             setReorderingAllowed(true)
             add(R.id.fragment_container_view, selectCountryHomePage)
         }
 
+        // if click on game button then switch to game activity
         buttonPlay.setOnClickListener{
             val intent = Intent(this, GameActivity::class.java)
             startActivity(intent)

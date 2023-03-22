@@ -34,6 +34,7 @@ class CountryMoreInfoFragment(var iso2Country: String) : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // Link the different screen object to the variables
         country_name = view.findViewById(R.id.country_name)
         country_real_name = view.findViewById(R.id.country_real_name)
         country_flag = view.findViewById(R.id.country_flag)
@@ -42,16 +43,20 @@ class CountryMoreInfoFragment(var iso2Country: String) : Fragment() {
         country_phonecode = view.findViewById(R.id.country_phonecode)
 
         lifecycleScope.launch {
+            // get the info
             val jsonResult = getMoreInfoCountryAsync(iso2Country)
 
+            //check if the operation was successful
             if (jsonResult[2] != 'i') {
                 //error occurred and we don't want the app to crash
                 return@launch
             }
 
+            // convert the info in json format
             val listType = object : TypeToken<CountryMoreInfoData>() {}.type
             val countryMoreInfoData: CountryMoreInfoData = Gson().fromJson(jsonResult, listType)
 
+            // Display the infos on  the right parts of the screen
             country_name.text = countryMoreInfoData.name
             country_real_name.text = countryMoreInfoData.native
             country_flag.text =countryMoreInfoData.emoji
@@ -63,10 +68,13 @@ class CountryMoreInfoFragment(var iso2Country: String) : Fragment() {
     }
 
     private suspend fun getMoreInfoCountryAsync(iso2Country:String): String {
+        // Function that retrieve the specific info on a specific country from the API
         return withContext(Dispatchers.IO) {
             val url = URL("https://api.countrystatecity.in/v1/countries/$iso2Country")
             val connection = url.openConnection() as HttpURLConnection
             connection.requestMethod = "GET"
+            // API key is stored in a local file that will never be pushed to server.
+            // WARNING : Must not put the API KEY in hard! use the variable
             connection.setRequestProperty("X-CSCAPI-KEY", PrivateData.API_KEY)
 
             val responseCode = connection.responseCode
